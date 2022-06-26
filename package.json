@@ -15,11 +15,16 @@
     "@emotion/styled": "^11.9.3",
     "@fontsource/roboto": "^4.5.7",
     "@mui/material": "^5.8.5",
+    "@types/react-query": "^1.2.9",
+    "@types/stylis": "^4.0.2",
     "next": "^12.1.6",
     "next-compose-plugins": "^2.2.1",
     "next-i18next": "^7.0.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-query": "^3.39.1",
+    "stylis": "^4.1.1",
+    "stylis-plugin-rtl": "^2.1.1"
   },
   "devDependencies": {
     "@testing-library/react": "^11.2.3",

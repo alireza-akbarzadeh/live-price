@@ -1,35 +1,37 @@
+// @React
 import * as React from 'react';
-import type { AppProps } from 'next/app';
-import { CacheProvider, EmotionCache } from '@emotion/react';
-import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
-
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-
+// @Next
+import type {AppProps} from 'next/app';
+// @Theme
+import ThemeConfig from "@styles/theme";
+// @emotion cache for mui
+import {EmotionCache} from '@emotion/react';
+// @server-side state management
+import {Hydrate, QueryClient, QueryClientProvider} from 'react-query'
+// @utils
 import createEmotionCache from '@utils/createEmotionCache';
-import lightThemeOptions from '@styles/theme/lightThemeOption';
-import '../src/styles/global.css';
+
+// interfaceProps
 interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache;
+    emotionCache?: EmotionCache;
 }
 
 const clientSideEmotionCache = createEmotionCache();
 
-const lightTheme = createTheme(lightThemeOptions);
-
 const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+    const {Component, emotionCache = clientSideEmotionCache, pageProps} = props;
+    const [queryClient] = React.useState(() => new QueryClient())
 
-  return (
-      <CacheProvider value={emotionCache}>
-        <ThemeProvider theme={lightTheme}>
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </CacheProvider>
-  );
+    return (
+        <QueryClientProvider client={queryClient}>
+            <Hydrate state={pageProps.dehydratedState}>
+                <ThemeConfig>
+                    {/*@ts-ignore}*/}
+                    <Component {...pageProps} />
+                </ThemeConfig>
+            </Hydrate>
+        </QueryClientProvider>
+    );
 };
 
 export default MyApp;

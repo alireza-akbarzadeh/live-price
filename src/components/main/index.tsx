@@ -7,7 +7,7 @@ export const Main: React.FC = () => {
     <div className={styles.main}>
       <h1>superplate</h1>
       <p>The frontend boilerplate with superpowers!</p>
-      <Button variant={"contained"}>Docs</Button>
+      <Button  color={"secondary"} variant={"contained"}>Docs</Button>
     </div>
   );
 };
