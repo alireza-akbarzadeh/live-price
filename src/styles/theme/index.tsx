@@ -23,6 +23,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import createEmotionCache from '@utils/createEmotionCache';
 import lightThemeOptions from '@styles/theme/lightThemeOption';
+
 const clientSideEmotionCache = createEmotionCache();
 
 // ----------------------------------------------------------------------
@@ -46,7 +47,6 @@ const ThemeConfig: React.FunctionComponent<IThemeProps> = ({children}) => {
     const themeOptions = useMemo(
         () => ({
             palette,
-            lightThemeOptions,
             shape: {borderRadius: 8},
             typography,
             shadows,
@@ -59,9 +59,10 @@ const ThemeConfig: React.FunctionComponent<IThemeProps> = ({children}) => {
     theme.components = componentsOverride(theme);
     const {t} = useTranslation();
     const dir = t('dir') === "rtl";
+    console.log(t('title'))
     return (
         <StyledEngineProvider injectFirst>
-            <CacheProvider value={dir ? cacheRtl : cacheLtr}>
+            <CacheProvider value={cacheRtl}>
                 <ThemeProvider theme={theme}>
                     <CssBaseline/>
                     {children}

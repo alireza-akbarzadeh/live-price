@@ -31,6 +31,18 @@
       "@utils": [
         "src/utils"
       ],
+      "@features/*": [
+        "src/features/*"
+      ],
+      "@features": [
+        "src/features"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@assets": [
+        "src/assets"
+      ],
       "@styles/*": [
         "src/styles/*"
       ],

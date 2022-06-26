@@ -7,7 +7,7 @@ import createEmotionCache from "@utils/createEmotionCache";
 export default class MyDocument extends Document {
   render() {
     return (
-        <Html lang="en">
+        <Html lang="fa">
           <Head>
             <link
                 rel="stylesheet"
