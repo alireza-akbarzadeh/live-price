@@ -1,11 +1,12 @@
 import React from "react";
 
-import { Header, Main, Cards, Footer } from "@components/css";
+import { Header, Main, Cards, Footer } from "@components";
+import {Box} from "@mui/material";
 
 const Home: React.FC = () => {
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
@@ -15,7 +16,7 @@ const Home: React.FC = () => {
       <Main />
       <Cards />
       <Footer />
-    </div>
+    </Box>
   );
 };
 
