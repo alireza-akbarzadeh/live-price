@@ -45,11 +45,11 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
   // @label
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   // @ data
-  console.log(infiniteData, "infiniteData");
   // @JSX
+  console.log(data, "sss");
   return (
     <TableBody>
-      {data?.items?.map((row: any, i: number) => {
+      {data.items?.map((row: any, i: number) => {
         const { id, icon, faName, enName, coin, price, quote, percent } = row;
         return (
           <TableRow

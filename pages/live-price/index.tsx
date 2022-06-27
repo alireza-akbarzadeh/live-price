@@ -26,7 +26,8 @@ const LivePrice: React.FC = () => {
     CurrencyContext
   ) as CurrencyContextType;
   // @Hook
-  const { data, status, error, refetch } = useFetchCurrencies();
+  const { data, status, error, refetch, fetchNextPage, hasNextPage } =
+    useFetchCurrencies();
   // effect
   useEffect(() => {
     refetch();
@@ -66,7 +67,13 @@ const LivePrice: React.FC = () => {
                 </Box>
               </Box>
               <Filter />
-              <TableCoins error={error} status={status} data={totalData[0]} />
+              <TableCoins
+                error={error}
+                status={status}
+                data={totalData[0]}
+                fetchNextPage={fetchNextPage}
+                hasNextPage={hasNextPage}
+              />
             </Paper>
           </Container>
         </Box>
