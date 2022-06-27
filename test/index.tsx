@@ -12,12 +12,15 @@ import {
  * To learn more about customizing renderer,
  * please visit https://testing-library.com/docs/react-testing-library/setup
  */
-
-export const AllTheProviders = ({ children }) => {
+interface IPropsProvider {
+  children: React.ReactNode;
+}
+export const AllTheProviders = ({ children }: IPropsProvider) => {
   return <>{children}</>;
 };
 
 const render = (ui: ReactElement, options?: Omit<RenderOptions, "queries">) =>
+  // @ts-ignore
   baseRender(ui, { wrapper: AllTheProviders, ...options }) as RenderResult;
 
 // re-export everything
