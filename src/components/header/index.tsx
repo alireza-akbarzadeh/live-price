@@ -11,14 +11,16 @@ import Divider from "@mui/material/Divider";
 // @react-icons
 import {BiUser} from "react-icons/bi"
 import {RiMenu3Fill} from "react-icons/ri"
+import {useRouter} from "next/router";
 
 export const Header: React.FC = () => {
+    const router = useRouter();
     let menuData = [
-        {id: 1, title: "منو", hasIcon: <RiMenu3Fill style={{marginLeft: 4}}/>},
-        {id: 2, title: "قیمت لحظهای", hasIcon: null},
-        {id: 2, title: "سفارشات", hasIcon: null},
-        {id: 2, title: "کاردمزدها", hasIcon: null},
-        {id: 2, title: "پورتفوی", hasIcon: null}
+        {id: 1, title: "منو", hasIcon: <RiMenu3Fill style={{marginLeft: 4}}/>, link: "/live-price"},
+        {id: 2, title: "قیمت لحظهای", hasIcon: null, link: "/live-price"},
+        {id: 2, title: "سفارشات", hasIcon: null, link: "/live-price"},
+        {id: 2, title: "کاردمزدها", hasIcon: null, link: "/live-price"},
+        {id: 2, title: "پورتفوی", hasIcon: null, link: "/live-price"}
     ]
     return (
         <Box sx={{background: "#fafafa", p: 0.3}}>
@@ -30,7 +32,8 @@ export const Header: React.FC = () => {
                 }} data-testid="container">
                     <Stack direction={"row"} spacing={"5px"}>
                         {menuData.map((menu, index) => (
-                            <MenuItem sx={{color: "#212121"}} key={menu.id + index}>
+                            <MenuItem onClick={() => router.push(menu.link)} sx={{color: "#212121"}}
+                                      key={menu.id + index}>
                                 {menu.hasIcon}
                                 {menu.title}
                             </MenuItem>
@@ -46,7 +49,7 @@ export const Header: React.FC = () => {
                             علیرضا اکبرزاده
                         </Button>
                         <Divider orientation="vertical" flexItem sx={{height: "30px", marginTop: 1.4}}/>
-                        <Logo/>
+                        <Logo />
                     </Box>
                 </Box>
             </Container>

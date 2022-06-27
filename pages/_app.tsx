@@ -12,6 +12,11 @@ import {Hydrate, QueryClient, QueryClientProvider} from 'react-query'
 import createEmotionCache from '@utils/createEmotionCache';
 // @assets
 import "../src/assets/css/index.css"
+// @components
+import {Header} from "@components";
+import {Box} from "@mui/material";
+// @context
+import {CurrencyProvider} from "@context"
 // interfaceProps
 interface MyAppProps extends AppProps {
     emotionCache?: EmotionCache;
@@ -22,17 +27,19 @@ const clientSideEmotionCache = createEmotionCache();
 const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
     const {Component, emotionCache = clientSideEmotionCache, pageProps} = props;
     const [queryClient] = React.useState(() => new QueryClient())
-
     return (
         <div dir={"rtl"}>
-        <QueryClientProvider client={queryClient}>
-            <Hydrate state={pageProps.dehydratedState}>
-                <ThemeConfig>
-                    {/*@ts-ignore}*/}
-                    <Component {...pageProps} />
-                </ThemeConfig>
-            </Hydrate>
-        </QueryClientProvider>
+            <QueryClientProvider client={queryClient}>
+                <Hydrate state={pageProps.dehydratedState}>
+                    <CurrencyProvider>
+                        <ThemeConfig>
+                            <Header/>
+                            {/*@ts-ignore}*/}
+                            <Component {...pageProps} />
+                        </ThemeConfig>
+                    </CurrencyProvider>
+                </Hydrate>
+            </QueryClientProvider>
         </div>
     );
 };

@@ -37,6 +37,18 @@
       "@features": [
         "src/features"
       ],
+      "@context/*": [
+        "src/context/*"
+      ],
+      "@context": [
+        "src/context"
+      ],
+      "@Hook/*": [
+        "src/Hook/*"
+      ],
+      "@Hook": [
+        "src/Hook"
+      ],
       "@assets/*": [
         "src/assets/*"
       ],
