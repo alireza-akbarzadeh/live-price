@@ -15,6 +15,9 @@ import { Scrollbar } from "@components";
 import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
 // @component
 import { TableCoinsBody } from "@components/table/TableCoinBody";
+// @scroll
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useFetchCurrencies } from "@Hook";
 
 // @Interface
 interface ITableProps {
@@ -30,6 +33,9 @@ export const TableCoins: React.FC<ITableProps> = ({ data, status, error }) => {
     CurrencyContext
   ) as CurrencyContextType;
   // @table Head
+  // @Hook
+  const { fetchNextPage, hasNextPage } = useFetchCurrencies();
+
   const TABLE_HEAD = [
     { id: "ارز دیجیتال", label: "ارز دیجیتال", alignRight: false },
     {
@@ -47,31 +53,39 @@ export const TableCoins: React.FC<ITableProps> = ({ data, status, error }) => {
     { id: "نشان کردن", label: "نشان کردن", alignRight: false },
   ];
   // @JSX
-
+  console.log(hasNextPage, "hasNextPage");
   return (
-    <div>
-      <Scrollbar sx={{ sm: { overflow: "auto" }, mt: 5 }}>
-        <TableContainer sx={{ minWidth: 800 }}>
-          <Table>
-            <TableHead sx={{ backgroundColor: "#fafafa" }}>
-              <TableRow
-                sx={{
-                  "& th ": {
-                    borderBottom: "1px solid rgba(0,0,0,0.1)",
-                  },
-                }}
-              >
-                {TABLE_HEAD.map((cell, index) => (
-                  <TableCell align={"right"} key={cell.id + index}>
-                    <Box color={"#212121"}>{cell.label}</Box>
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableCoinsBody data={data} />
-          </Table>
-        </TableContainer>
-      </Scrollbar>
-    </div>
+    <>
+      <InfiniteScroll
+        dataLength={data.meta.paginateHelper.total}
+        next={fetchNextPage}
+        //@ts-ignore
+        hasMore={hasNextPage}
+        loader={<h4>Loading...</h4>}
+      >
+        <Scrollbar sx={{ sm: { overflow: "auto" }, mt: 5 }}>
+          <TableContainer sx={{ minWidth: 800 }}>
+            <Table>
+              <TableHead sx={{ backgroundColor: "#fafafa" }}>
+                <TableRow
+                  sx={{
+                    "& th ": {
+                      borderBottom: "1px solid rgba(0,0,0,0.1)",
+                    },
+                  }}
+                >
+                  {TABLE_HEAD.map((cell, index) => (
+                    <TableCell align={"right"} key={cell.id + index}>
+                      <Box color={"#212121"}>{cell.label}</Box>
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableCoinsBody data={data} />
+            </Table>
+          </TableContainer>
+        </Scrollbar>
+      </InfiniteScroll>
+    </>
   );
 };

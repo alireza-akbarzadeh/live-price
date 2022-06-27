@@ -13,6 +13,7 @@ export interface CurrencyContextType {
   setPage: (val: number) => void;
   currentCurrency: string;
   setCurrentCurrency: (val: string) => void;
+  pageParam?: number;
 }
 
 //context

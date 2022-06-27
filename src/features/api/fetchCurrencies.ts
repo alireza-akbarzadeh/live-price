@@ -9,21 +9,11 @@ const createApi = axios.create({
 const fetchCurrencies = async (
   queryType?: string,
   sort?: string,
-  search?: string,
-  page?: null
+  search?: string
 ) => {
-  let params = "currencies";
-  if (queryType) {
-    params =
-      queryType === "search"
-        ? `currencies?q=${search}`
-        : queryType === "sort"
-        ? `currencies?sort=${sort}`
-        : queryType === "page"
-        ? `currencies?page=${page}`
-        : `currencies`;
-  }
-  return createApi.get(params);
+  // createApi.get(params);
+
+  return null;
 };
 
 export default fetchCurrencies;

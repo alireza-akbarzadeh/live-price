@@ -19,6 +19,15 @@ import {
   IoMdArrowDropdown,
 } from "react-icons/io";
 import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
+// Recharts
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from "recharts";
 
 interface ITableCoinsProps {
   data: any;
@@ -31,10 +40,12 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({ data }) => {
   ) as CurrencyContextType;
   // @label
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  // @ data
+
   // @JSX
   return (
     <TableBody>
-      {data?.data?.result?.items?.map((row: any, i: number) => {
+      {data?.items.map((row: any, i: number) => {
         const { id, icon, faName, enName, coin, price, quote, percent } = row;
         return (
           <TableRow
@@ -49,8 +60,14 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({ data }) => {
             tabIndex={-1}
             role="checkbox"
           >
-            <TableCell sx={{ display: "flex", gap: 0.6, alignItems: "center" }}>
-              <Image src={icon} width={"40"} height={"40"} />
+            <TableCell
+              sx={{
+                display: "flex",
+                gap: 0.6,
+                alignItems: "center",
+              }}
+            >
+              <Image src={icon} width={"33"} height={"33"} />
               <Box>
                 <Typography component={"div"} variant={"body2"}>
                   {enName}
@@ -82,9 +99,7 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({ data }) => {
               <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                 <div>
                   {currentCurrency === "تومان"
-                    ? (
-                        price * data?.data?.result.meta.prices.buy
-                      ).toLocaleString()
+                    ? (price * data?.meta.prices.buy).toLocaleString()
                     : price}
                 </div>
                 <div>
@@ -105,9 +120,7 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({ data }) => {
               <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                 <div>
                   {currentCurrency === "تومان"
-                    ? (
-                        price * data?.data?.result.meta.prices.sell
-                      ).toLocaleString()
+                    ? (price * data?.meta.prices.sell).toLocaleString()
                     : quote.toLocaleString()}
                 </div>
                 <div>
@@ -115,7 +128,30 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({ data }) => {
                 </div>
               </Box>
             </TableCell>
-            <TableCell align="right">چارت</TableCell>
+            <TableCell align="right">
+              {/*<AreaChart*/}
+              {/*  margin={{*/}
+              {/*    top: 10,*/}
+              {/*    right: 30,*/}
+              {/*    left: 0,*/}
+              {/*    bottom: 0,*/}
+              {/*  }}*/}
+              {/*  width={300}*/}
+              {/*  height={160}*/}
+              {/*  data={data}*/}
+              {/*>*/}
+              {/*  <CartesianGrid strokeDasharray="3 3" />*/}
+              {/*  <XAxis dataKey="name" />*/}
+              {/*  <YAxis />*/}
+              {/*  <Tooltip />*/}
+              {/*  <Area*/}
+              {/*    type="monotone"*/}
+              {/*    dataKey="uv"*/}
+              {/*    stroke="#8884d8"*/}
+              {/*    fill="#8884d8"*/}
+              {/*  />*/}
+              {/*</AreaChart>*/}
+            </TableCell>
             <TableCell
               sx={{
                 color:
@@ -163,7 +199,6 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({ data }) => {
                 justifyContent: "Center",
                 alignItems: "center",
                 flexDirection: "column",
-                width: "100%",
               }}
             >
               <img src={"/images/NotFound.svg"} alt="Not Found" />
