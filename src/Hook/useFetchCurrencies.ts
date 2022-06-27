@@ -8,6 +8,8 @@ import fetchCurrencies from "@features/api/fetchCurrencies";
 import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
 
 export const useFetchCurrencies = () => {
-  const { query } = useContext(CurrencyContext) as CurrencyContextType;
-  return useQuery("currencies", () => fetchCurrencies(query), {});
+  const { queryType, search, sort } = useContext(
+    CurrencyContext
+  ) as CurrencyContextType;
+  return useQuery("currencies", () => fetchCurrencies(queryType, sort, search));
 };

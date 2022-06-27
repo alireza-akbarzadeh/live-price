@@ -1,55 +1,48 @@
 // @react
-import React, { useContext } from "react";
+import React, { useContext, useTransition } from "react";
 // @mui/material
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
-// @react-icons
-import { BiStar } from "react-icons/bi";
-import { VscSearch } from "react-icons/vsc";
 import {
+  CircularProgress,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import {
-  CurrencyContext,
-  CurrencyContextType,
-  IQueryProps,
-} from "@context/CurrencyContext";
+// @react-icons
+import { BiStar } from "react-icons/bi";
+import { VscSearch } from "react-icons/vsc";
 
-interface IFilterProps {
-  setQuery: (val: IQueryProps) => void;
-  query: any;
-}
+import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
 
-export const Filter: React.FC<IFilterProps> = ({ setQuery, query }) => {
+export const Filter: React.FC = () => {
+  const [pending, startTransition] = useTransition();
   //@ context
-  const { currentCurrency, setCurrentCurrency } = useContext(
-    CurrencyContext
-  ) as CurrencyContextType;
+  const {
+    currentCurrency,
+    setCurrentCurrency,
+    sort,
+    setSearch,
+    setQueryType,
+    setSort,
+  } = useContext(CurrencyContext) as CurrencyContextType;
 
   // @handleSort
   const handleChangeSelect = (event: SelectChangeEvent) => {
-    setQuery({
-      type: "sort",
-      params: event.target.value,
-    });
+    setSort(event.target.value);
+    setQueryType("sort");
   };
-
   // @handle-search
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery({
-      type: "search",
-      params: e.target.value,
-    });
-    // @JSX
+    startTransition(() => setSearch(e.target.value));
+    setQueryType("search");
   };
+  // @JSX
   return (
     <Stack
       mt={4}
@@ -64,7 +57,11 @@ export const Filter: React.FC<IFilterProps> = ({ setQuery, query }) => {
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              <VscSearch fontSize={22} />
+              {pending ? (
+                <CircularProgress color="secondary" />
+              ) : (
+                <VscSearch fontSize={22} />
+              )}
             </InputAdornment>
           ),
         }}
@@ -90,12 +87,12 @@ export const Filter: React.FC<IFilterProps> = ({ setQuery, query }) => {
             color={"success"}
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={query.params}
+            value={sort}
             label="ترتیب بر اساس"
             onChange={handleChangeSelect}
           >
-            <MenuItem value={1}>ییشترین قیمت</MenuItem>
-            <MenuItem value={2}>کمترین قیمت</MenuItem>
+            <MenuItem value={2}>ییشترین قیمت</MenuItem>
+            <MenuItem value={1}>کمترین قیمت</MenuItem>
           </Select>
         </FormControl>
       </Box>

@@ -1,17 +1,23 @@
 import axios from "axios";
+import { useContext } from "react";
+import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
 
 const createApi = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
-const fetchCurrencies = async (query?: any) => {
+const fetchCurrencies = async (
+  queryType?: string,
+  sort?: string,
+  search?: string
+) => {
   let params = "currencies";
-  if (query) {
+  if (queryType) {
     params =
-      query.type === "search"
-        ? `currencies?q=${query.params}`
-        : query.type === "sort"
-        ? `currencies?sort=${query.params}`
+      queryType === "search"
+        ? `currencies?q=${search}`
+        : queryType === "sort"
+        ? `currencies?sort=${sort}`
         : `currencies`;
   }
   return createApi.get(params);

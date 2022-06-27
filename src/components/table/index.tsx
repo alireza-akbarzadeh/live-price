@@ -7,7 +7,7 @@ import {
   TableRow,
   TableContainer,
   TableHead,
-  Typography,
+  Box,
 } from "@mui/material";
 /// @components
 import { Scrollbar } from "@components";
@@ -22,6 +22,7 @@ interface ITableProps {
   error: any;
   status: string;
 }
+
 // @jsX
 export const TableCoins: React.FC<ITableProps> = ({ data, status, error }) => {
   //@ context
@@ -48,41 +49,29 @@ export const TableCoins: React.FC<ITableProps> = ({ data, status, error }) => {
   // @JSX
 
   return (
-    <Scrollbar sx={{ sm: { overflow: "auto" }, mt: 5 }}>
-      <TableContainer sx={{ minWidth: 800 }}>
-        <Table>
-          <TableHead sx={{ backgroundColor: "#fafafa" }}>
-            <TableRow
-              sx={{
-                "& th ": {
-                  borderBottom: "1px solid rgba(0,0,0,0.1)",
-                },
-              }}
-            >
-              {TABLE_HEAD.map((cell, index) => (
-                <TableCell align={"right"} key={cell.id + index}>
-                  <Typography
-                    component={"span"}
-                    variant={"body2"}
-                    color={"#212121"}
-                  >
-                    {cell.label}
-                  </Typography>
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          {status === "loading " ? (
-            <p>Loading ...</p>
-          ) : status === "error" ? (
-            <p>{error.message}</p>
-          ) : (
-            <>
-              <TableCoinsBody data={data} />
-            </>
-          )}
-        </Table>
-      </TableContainer>
-    </Scrollbar>
+    <div>
+      <Scrollbar sx={{ sm: { overflow: "auto" }, mt: 5 }}>
+        <TableContainer sx={{ minWidth: 800 }}>
+          <Table>
+            <TableHead sx={{ backgroundColor: "#fafafa" }}>
+              <TableRow
+                sx={{
+                  "& th ": {
+                    borderBottom: "1px solid rgba(0,0,0,0.1)",
+                  },
+                }}
+              >
+                {TABLE_HEAD.map((cell, index) => (
+                  <TableCell align={"right"} key={cell.id + index}>
+                    <Box color={"#212121"}>{cell.label}</Box>
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableCoinsBody data={data} />
+          </Table>
+        </TableContainer>
+      </Scrollbar>
+    </div>
   );
 };

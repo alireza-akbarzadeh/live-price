@@ -48,8 +48,6 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({ data }) => {
             }}
             tabIndex={-1}
             role="checkbox"
-            // selected={isItemSelected}
-            // aria-checked={isItemSelected}
           >
             <TableCell sx={{ display: "flex", gap: 0.6, alignItems: "center" }}>
               <Image src={icon} width={"40"} height={"40"} />
@@ -155,15 +153,25 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({ data }) => {
           </TableRow>
         );
       })}
-      {/*{isUserNotFound && (*/}
-      {/*    <TableBody>*/}
-      {/*        <TableRow>*/}
-      {/*            <TableCell align="center" colSpan={6} sx={{ py: 3 }}>*/}
-      {/*                <SearchNotFound searchQuery={filterName} />*/}
-      {/*            </TableCell>*/}
-      {/*        </TableRow>*/}
-      {/*    </TableBody>*/}
-      {/*)}*/}
+      {data?.data?.result?.items.length === 0 && (
+        <TableBody>
+          <TableRow>
+            <Box
+              sx={{
+                mt: 4,
+                display: "flex",
+                justifyContent: "Center",
+                alignItems: "center",
+                flexDirection: "column",
+                width: "100%",
+              }}
+            >
+              <img src={"/images/NotFound.svg"} alt="Not Found" />
+              Not Fount
+            </Box>
+          </TableRow>
+        </TableBody>
+      )}
     </TableBody>
   );
 };

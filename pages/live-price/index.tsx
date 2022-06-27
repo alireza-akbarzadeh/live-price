@@ -12,12 +12,7 @@ import fetchCurrencies from "@features/api/fetchCurrencies";
 // @Hook
 import { useFetchCurrencies } from "@Hook";
 // @Context
-import {
-  CurrencyContext,
-  CurrencyContextType,
-  IQueryProps,
-} from "@context/CurrencyContext";
-import socketio from "socket.io-client";
+import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
 
 // @render
 export async function getStaticProps() {
@@ -27,10 +22,14 @@ export async function getStaticProps() {
 
 // @JSX
 const LivePrice: React.FC = (props) => {
-  const { query, setQuery, SOCKET_URL } = useContext(
+  const { queryType, search, sort } = useContext(
     CurrencyContext
   ) as CurrencyContextType;
-  const { data, status, error } = useFetchCurrencies();
+
+  const { data, status, error, refetch } = useFetchCurrencies();
+  useEffect(() => {
+    refetch();
+  }, [search, sort]);
   return (
     <Box
       sx={{
@@ -46,10 +45,13 @@ const LivePrice: React.FC = (props) => {
               <Typography variant={"h4"}>قیمت لحظهای</Typography>
               <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
                 <CircleBounce />
-                <Typography variant={"body1"}>296 ارز دیجیتا</Typography>
+                <Typography variant={"body1"}>
+                  {data && data?.data.result.meta.paginateHelper.total} ارز
+                  دیجیتال
+                </Typography>
               </Box>
             </Box>
-            <Filter query={query} setQuery={setQuery} />
+            <Filter />
             <TableCoins error={error} status={status} data={data} />
           </Paper>
         </Container>
@@ -59,16 +61,3 @@ const LivePrice: React.FC = (props) => {
 };
 
 export default LivePrice;
-
-// const socket = socketio.connect(SOCKET_URL);
-// useEffect(() => {
-//     socket.emit("currencies", (data) => {
-//         console.log(data, "socketData")
-//     });
-//     socket.on("currencies", (data) => {
-//         console.log(data, "data");
-//     });
-//     return () => {
-//         socket.off("new_coins_list");
-//     };
-// }, []);
