@@ -1,5 +1,5 @@
 // @React
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // @mui/material
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -7,13 +7,10 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 // @components
 import { CircleBounce, Filter, TableCoins } from "@components";
-// @features
-import fetchCurrencies from "@features/api/fetchCurrencies";
 // @Hook
 import { useFetchCurrencies } from "@Hook";
 // @Context
 import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 // @render
 // export async function getStaticProps() {
@@ -25,7 +22,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 //@ts-ignore
 const LivePrice: React.FC = () => {
   // @context
-  const { queryType, search, sort } = useContext(
+  const { queryType, search, sort, setInfiniteData, infiniteData } = useContext(
     CurrencyContext
   ) as CurrencyContextType;
   // @Hook
@@ -34,9 +31,13 @@ const LivePrice: React.FC = () => {
   useEffect(() => {
     refetch();
   }, [search, sort]);
-
   let totalData: any =
     status === "success" && data?.pages.map((item) => item.result);
+  useEffect(() => {
+    // @ts-ignore
+    if (status === "success")
+      setInfiniteData((prev: []) => [...prev, ...data?.pages[0].result.items]);
+  }, [data?.pageParams]);
   return (
     status === "success" && (
       <Box
@@ -58,7 +59,9 @@ const LivePrice: React.FC = () => {
                   <CircleBounce />
                   <Typography variant={"body1"}>
                     {totalData[0].meta.paginateHelper.total}
-                    ارز دیجیتال
+                    <Typography component={"span"} sx={{ mx: 1 }}>
+                      ارز دیجیتال
+                    </Typography>
                   </Typography>
                 </Box>
               </Box>

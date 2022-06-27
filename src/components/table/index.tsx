@@ -29,7 +29,7 @@ interface ITableProps {
 // @jsX
 export const TableCoins: React.FC<ITableProps> = ({ data, status, error }) => {
   //@ context
-  const { currentCurrency } = useContext(
+  const { currentCurrency, infiniteData } = useContext(
     CurrencyContext
   ) as CurrencyContextType;
   // @table Head
@@ -53,7 +53,6 @@ export const TableCoins: React.FC<ITableProps> = ({ data, status, error }) => {
     { id: "نشان کردن", label: "نشان کردن", alignRight: false },
   ];
   // @JSX
-  console.log(hasNextPage, "hasNextPage");
   return (
     <>
       <InfiniteScroll
@@ -81,7 +80,7 @@ export const TableCoins: React.FC<ITableProps> = ({ data, status, error }) => {
                   ))}
                 </TableRow>
               </TableHead>
-              <TableCoinsBody data={data} />
+              <TableCoinsBody data={data} infiniteData={infiniteData} />
             </Table>
           </TableContainer>
         </Scrollbar>

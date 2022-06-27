@@ -9,8 +9,8 @@ export interface CurrencyContextType {
   search: string;
   queryType: string;
   setQueryType: (val: string) => void;
-  page: number;
-  setPage: (val: number) => void;
+  infiniteData: [];
+  setInfiniteData: (val: any) => void;
   currentCurrency: string;
   setCurrentCurrency: (val: string) => void;
   pageParam?: number;
@@ -29,15 +29,15 @@ export function CurrencyProvider({ children }: IContextProps) {
   const [sort, setSort] = useState<string>("");
   const [search, setSearch] = useState<string>("");
   const [queryType, setQueryType] = useState<string>("");
-  const [page, setPage] = useState<number>(1);
+  const [infiniteData, setInfiniteData] = useState<any>([]);
   const [currentCurrency, setCurrentCurrency] = React.useState<string>("تومان");
 
   return (
     <CurrencyContext.Provider
       value={{
         search,
-        page,
-        setPage,
+        infiniteData,
+        setInfiniteData,
         setSearch,
         queryType,
         setQueryType,

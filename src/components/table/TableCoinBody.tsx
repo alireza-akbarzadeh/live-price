@@ -31,9 +31,13 @@ import {
 
 interface ITableCoinsProps {
   data: any;
+  infiniteData: [];
 }
 
-export const TableCoinsBody: React.FC<ITableCoinsProps> = ({ data }) => {
+export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
+  data,
+  infiniteData,
+}) => {
   //@ context
   const { currentCurrency } = useContext(
     CurrencyContext
@@ -41,11 +45,11 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({ data }) => {
   // @label
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   // @ data
-
+  console.log(infiniteData, "infiniteData");
   // @JSX
   return (
     <TableBody>
-      {data?.items.map((row: any, i: number) => {
+      {infiniteData?.map((row: any, i: number) => {
         const { id, icon, faName, enName, coin, price, quote, percent } = row;
         return (
           <TableRow
