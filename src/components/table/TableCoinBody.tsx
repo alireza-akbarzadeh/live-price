@@ -49,7 +49,7 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
   // @JSX
   return (
     <TableBody>
-      {infiniteData?.map((row: any, i: number) => {
+      {data?.items?.map((row: any, i: number) => {
         const { id, icon, faName, enName, coin, price, quote, percent } = row;
         return (
           <TableRow
