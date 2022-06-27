@@ -1,7 +1,6 @@
 //@ React
 import React, { useContext } from "react";
 //@Next
-// import Image from "next/Image";
 // @mui
 import {
   TableCell,
