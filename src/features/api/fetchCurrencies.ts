@@ -9,7 +9,8 @@ const createApi = axios.create({
 const fetchCurrencies = async (
   queryType?: string,
   sort?: string,
-  search?: string
+  search?: string,
+  page?: null
 ) => {
   let params = "currencies";
   if (queryType) {
@@ -18,6 +19,8 @@ const fetchCurrencies = async (
         ? `currencies?q=${search}`
         : queryType === "sort"
         ? `currencies?sort=${sort}`
+        : queryType === "page"
+        ? `currencies?page=${page}`
         : `currencies`;
   }
   return createApi.get(params);
