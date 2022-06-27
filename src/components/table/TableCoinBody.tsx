@@ -1,7 +1,7 @@
 //@ React
 import React, { useContext } from "react";
 //@Next
-import Image from "next/Image";
+// import Image from "next/Image";
 // @mui
 import {
   TableCell,
@@ -71,7 +71,9 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
                 alignItems: "center",
               }}
             >
-              <Image src={icon} width={"33"} height={"33"} />
+              {/*<Image src={icon} width={"33"} height={"33"} />*/}
+              <img src={icon} style={{ width: 33, height: 33 }} alt={faName} />
+
               <Box>
                 <Typography component={"div"} variant={"body2"}>
                   {enName}
