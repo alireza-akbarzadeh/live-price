@@ -14,7 +14,8 @@ import "../src/assets/css/index.css";
 import { Header } from "@components";
 // @context
 import { CurrencyProvider } from "@context";
-
+// @css
+import "../src/styles/globale.module.css";
 // interfaceProps
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;

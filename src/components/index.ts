@@ -4,3 +4,4 @@ export { CircleBounce } from "./CircleBounce";
 export { Filter } from "./fliter";
 export { TableCoins } from "./table";
 export { Loading } from "./Loading";
+export { SimpleLineChart } from "./chart/SimpleChart";

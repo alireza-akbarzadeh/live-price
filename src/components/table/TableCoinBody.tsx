@@ -21,7 +21,17 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
     <TableBody>
       <>
         {data?.map((row: any, index: any) => {
-          const { id, icon, faName, enName, coin, price, quote, percent } = row;
+          const {
+            id,
+            icon,
+            faName,
+            enName,
+            coin,
+            price,
+            quote,
+            percent,
+            chart,
+          } = row;
           if (data.length === index + 1) {
             return (
               <TableRow
@@ -41,6 +51,7 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
                   <Loading />
                 ) : (
                   <TableItem
+                    chart={chart}
                     id={id}
                     icon={icon}
                     faName={faName}
@@ -72,6 +83,7 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
                   <Loading />
                 ) : (
                   <TableItem
+                    chart={chart}
                     id={id}
                     icon={icon}
                     faName={faName}

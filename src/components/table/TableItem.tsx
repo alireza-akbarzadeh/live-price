@@ -7,6 +7,7 @@ import {
 } from "react-icons/io";
 import { AiOutlineStar, AiTwotoneStar } from "react-icons/ai";
 import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
+import { SimpleLineChart } from "@components";
 
 interface ITableProps {
   index: any;
@@ -18,6 +19,7 @@ interface ITableProps {
   price: number;
   quote: string;
   percent: number;
+  chart: [];
 }
 export const TableItem: React.FC<ITableProps> = ({
   icon,
@@ -25,6 +27,7 @@ export const TableItem: React.FC<ITableProps> = ({
   enName,
   coin,
   percent,
+  chart,
   index,
   id,
   price,
@@ -109,30 +112,7 @@ export const TableItem: React.FC<ITableProps> = ({
         </Box>
       </TableCell>
       <TableCell align="center">
-        {percent > 0 ? (
-          <Box
-            sx={{
-              height: "30px",
-              textAlign: "center",
-              boxSizing: " content-box",
-              filter: "hue-rotate(85deg) saturate(80%) brightness(0.85)",
-            }}
-            component={"img"}
-            src={"/images/chart-1.svg"}
-          />
-        ) : (
-          <Box
-            sx={{
-              height: "30px",
-              textAlign: "center",
-              boxSizing: " content-box",
-              filter:
-                " hue-rotate(300deg) saturate(210%) brightness(0.7) contrast(170%)",
-            }}
-            component={"img"}
-            src={"/images/chart-2.svg"}
-          />
-        )}
+        <SimpleLineChart percent={percent} chart={chart} />
       </TableCell>
       <TableCell
         sx={{
