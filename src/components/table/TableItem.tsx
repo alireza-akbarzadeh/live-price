@@ -106,7 +106,32 @@ export const TableItem: React.FC<ITableProps> = ({
           <div>{currentCurrency === "تومان" ? "تومان" : <span>USDT</span>}</div>
         </Box>
       </TableCell>
-      <TableCell align="right">چارت</TableCell>
+      <TableCell align="center">
+        {percent > 0 ? (
+          <Box
+            sx={{
+              height: "30px",
+              textAlign: "center",
+              boxSizing: " content-box",
+              filter: "hue-rotate(85deg) saturate(80%) brightness(0.85)",
+            }}
+            component={"img"}
+            src={"/images/chart-1.svg"}
+          />
+        ) : (
+          <Box
+            sx={{
+              height: "30px",
+              textAlign: "center",
+              boxSizing: " content-box",
+              filter:
+                " hue-rotate(300deg) saturate(210%) brightness(0.7) contrast(170%)",
+            }}
+            component={"img"}
+            src={"/images/chart-2.svg"}
+          />
+        )}
+      </TableCell>
       <TableCell
         sx={{
           color:
