@@ -11,7 +11,7 @@ export function useCurrencies(
   queryType: string,
   setMeta: (val: {}) => void
 ) {
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean | undefined>(true);
   const [error, setError] = useState<boolean>(false);
   const [currencies, setCurrencies] = useState<any>([]);
   const [hasMore, setHasMore] = useState<boolean>(false);

@@ -24,7 +24,7 @@ interface ITableProps {
   fetchNextPage: any;
   lastBookElementRef: any;
   meta: {};
-  loading: boolean;
+  loading: boolean | undefined;
 }
 
 // @jsX
