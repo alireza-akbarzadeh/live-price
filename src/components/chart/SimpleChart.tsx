@@ -51,7 +51,7 @@ export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
       return (
         <Box
           sx={{
-            display: "flex",
+            // display: "flex",
             justifyContent: "center",
             alignItems: "center",
             backgroundColor: "red",
@@ -92,14 +92,19 @@ export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
     updateTooltip(e);
   };
   return (
-    <Box sx={{ display: "flex", flexDirection: "column" }}>
+    <Box
+      sx={{
+        // display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Box
         sx={{
           ml: 24,
-          display: "flex",
+          // display: "flex",
           justifyContent: "center",
           flexDirection: "column",
-          width: 48,
+          // width: 48,
           alignItems: "center",
           mt: "32px",
           mb: "10px",
@@ -111,7 +116,7 @@ export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
         <p className="caption2">ผลลัพธ์</p>
         <p className="subheading2">680</p>
       </Box>
-      <LineChart width={330} height={100} data={dataChart}>
+      <LineChart width={330} height={50} data={dataChart}>
         <CartesianGrid vertical={false} opacity="0.2" />
         {/*<XAxis*/}
         {/*  tick={{ fill: "black" }}*/}
@@ -120,11 +125,11 @@ export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
         {/*  dataKey="name"*/}
         {/*/>*/}
         {/*<YAxis*/}
-        {/*  tickCount={7}*/}
+        {/*  tickCount={0}*/}
         {/*  axisLine={false}*/}
         {/*  tickLine={false}*/}
         {/*  tick={{ fill: "black" }}*/}
-        {/*  type="number"*/}
+        {/*  type="category"*/}
         {/*/>*/}
         <Line
           fill={percent > 0 ? "#74d4ab" : "#ef6b64"}
@@ -140,7 +145,7 @@ export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
       </LineChart>
       <Box
         sx={{
-          display: "flex",
+          // display: "flex",
           color: "#fff",
           justifyContent: "center",
           alignItems: "center",
