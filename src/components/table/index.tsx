@@ -59,30 +59,45 @@ export const TableCoins: React.FC<Partial<ITableProps>> = ({
   // @JSX
   return (
     <Box sx={{ direction: "rtl" }} mt={4}>
-      <TableContainer sx={{ minWidth: 800, md: { overflow: "auto" } }}>
-        <Table>
-          <TableHead sx={{ backgroundColor: "#fafafa" }}>
-            <TableRow
-              sx={{
-                "& th ": {
-                  borderBottom: "1px solid rgba(0,0,0,0.1)",
-                },
-              }}
-            >
-              {TABLE_HEAD.map((cell, index) => (
-                <TableCell align={"right"} key={cell.id + index}>
-                  <Box color={"#212121"}>{cell.label}</Box>
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableCoinsBody
-            loading={loading}
-            lastBookElementRef={lastBookElementRef}
-            data={data}
-          />
-        </Table>
-      </TableContainer>
+      {data?.length === 0 ? (
+        <Box
+          sx={{
+            mt: 4,
+            display: "flex",
+            justifyContent: "Center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <img src={"/images/NotFound.svg"} alt="Not Found" />
+          Not Fount
+        </Box>
+      ) : (
+        <TableContainer sx={{ minWidth: 800, md: { overflow: "auto" } }}>
+          <Table>
+            <TableHead sx={{ backgroundColor: "#fafafa" }}>
+              <TableRow
+                sx={{
+                  "& th ": {
+                    borderBottom: "1px solid rgba(0,0,0,0.1)",
+                  },
+                }}
+              >
+                {TABLE_HEAD.map((cell, index) => (
+                  <TableCell align={"right"} key={cell.id + index}>
+                    <Box color={"#212121"}>{cell.label}</Box>
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableCoinsBody
+              loading={loading}
+              lastBookElementRef={lastBookElementRef}
+              data={data}
+            />
+          </Table>
+        </TableContainer>
+      )}
     </Box>
   );
 };
