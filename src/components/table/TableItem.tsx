@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Box, Checkbox, TableCell, TableRow, Typography } from "@mui/material";
+import { Box, Checkbox, TableCell, Typography } from "@mui/material";
 import {
   IoMdArrowDropdown,
   IoMdArrowDropright,

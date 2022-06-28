@@ -29,11 +29,10 @@ interface ITableProps {
 // @jsX
 export const TableCoins: React.FC<Partial<ITableProps>> = ({
   data,
-  meta,
   lastBookElementRef,
 }) => {
   //@ context
-  const { currentCurrency, infiniteData } = useContext(
+  const { currentCurrency } = useContext(
     CurrencyContext
   ) as CurrencyContextType;
   // @table Head

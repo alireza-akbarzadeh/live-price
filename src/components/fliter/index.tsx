@@ -29,7 +29,6 @@ interface IFilterProps {
 }
 export const Filter: React.FC<IFilterProps> = ({
   setPageNumber,
-  setQuery,
   setSearch,
   setSort,
   sort,

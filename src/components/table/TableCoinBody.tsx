@@ -14,7 +14,6 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
   lastBookElementRef,
 }) => {
   // @JSX
-  console.log(data, "data");
   return (
     <TableBody>
       <>
