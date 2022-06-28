@@ -23,11 +23,13 @@ interface ITableProps {
   hasNextPage: any;
   fetchNextPage: any;
   lastBookElementRef: any;
+  meta: {};
 }
 
 // @jsX
 export const TableCoins: React.FC<Partial<ITableProps>> = ({
   data,
+  meta,
   lastBookElementRef,
 }) => {
   //@ context

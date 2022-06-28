@@ -21,7 +21,9 @@ import useCurrencies from "@Hook/useCurrencies";
 
 const LivePrice: React.FC = () => {
   // @Context
-  const { queryType } = useContext(CurrencyContext) as CurrencyContextType;
+  const { queryType, setQueryType, setMeta } = useContext(
+    CurrencyContext
+  ) as CurrencyContextType;
   // @Hook
   const [query, setQuery] = useState<string>("");
   const [search, setSearch] = useState<string>("");
@@ -33,7 +35,8 @@ const LivePrice: React.FC = () => {
     pageNumber,
     search,
     sort,
-    queryType
+    queryType,
+    setMeta
   );
   // @logic for infinite scroll
   const observer = useRef<IntersectionObserver>();
@@ -44,6 +47,7 @@ const LivePrice: React.FC = () => {
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
           setPageNumber((prevPageNumber) => prevPageNumber + 1);
+          setQueryType("page");
         }
       });
       if (node) observer.current?.observe(node);

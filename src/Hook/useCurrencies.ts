@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
 export default function useCurrencies(
   query: string,
   pageNumber: number,
   search: string,
   sort: string,
-  queryType: string
+  queryType: string,
+  setMeta: (val: {}) => void
 ) {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
@@ -34,10 +36,21 @@ export default function useCurrencies(
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {
-        setCurrencies((state: any) => {
-          //@ts-ignore
-          return [...new Set([...state, ...res.data.result.items])];
-        });
+        if (queryType === "search") {
+          setCurrencies(res.data.result.items);
+          setMeta(res.data.result.meta);
+        }
+        if (queryType === "sort") {
+          setCurrencies(res.data.result.items);
+          setMeta(res.data.result.meta);
+        }
+        if (queryType === "page") {
+          setMeta(res.data.result.meta);
+          setCurrencies((state: any) => {
+            //@ts-ignore
+            return [...new Set([...state, ...res.data.result.items])];
+          });
+        }
         // console.log(res.data.result.meta.paginationHelper.total)
         setHasMore(
           res.data.result.meta.paginateHelper.total > currencies.length + 20
@@ -51,7 +64,7 @@ export default function useCurrencies(
     //@ts-ignore
     return () => cancel();
     // query, pageNumber
-  }, [query, sort, search, pageNumber]);
+  }, [query, search, pageNumber, sort]);
 
   return { loading, error, currencies, hasMore };
 }
