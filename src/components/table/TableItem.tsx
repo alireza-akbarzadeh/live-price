@@ -79,7 +79,8 @@ export const TableItem: React.FC<ITableProps> = ({
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <div>
             {currentCurrency === "تومان"
-              ? (price * meta?.prices?.buy).toLocaleString()
+              ? //@ts-ignore
+                (price * meta?.prices?.buy).toLocaleString()
               : price}
           </div>
           <div>
@@ -100,7 +101,8 @@ export const TableItem: React.FC<ITableProps> = ({
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <div>
             {currentCurrency === "تومان"
-              ? (price * meta.prices?.sell).toLocaleString()
+              ? //@ts-ignore
+                (price * meta.prices?.sell).toLocaleString()
               : quote.toLocaleString()}
           </div>
           <div>{currentCurrency === "تومان" ? "تومان" : <span>USDT</span>}</div>

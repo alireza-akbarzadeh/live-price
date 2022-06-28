@@ -29,7 +29,7 @@ export function CurrencyProvider({ children }: IContextProps) {
   const [sort, setSort] = useState<string>("");
   const [search, setSearch] = useState<string>("");
   const [queryType, setQueryType] = useState<string>("page");
-  const [meta, setMeta] = useState<{}>({});
+  const [meta, setMeta] = useState<any>({});
   const [currentCurrency, setCurrentCurrency] = React.useState<string>("تومان");
 
   return (
