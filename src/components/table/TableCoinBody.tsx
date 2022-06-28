@@ -8,6 +8,7 @@ import { Loading } from "@components";
 interface ITableCoinsProps {
   data: any;
   lastBookElementRef: any;
+  loading: boolean;
 }
 // @JSX
 export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
