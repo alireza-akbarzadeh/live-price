@@ -47,22 +47,18 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
                 tabIndex={-1}
                 role="checkbox"
               >
-                {loading ? (
-                  <Loading />
-                ) : (
-                  <TableItem
-                    chart={chart}
-                    id={id}
-                    icon={icon}
-                    faName={faName}
-                    enName={enName}
-                    coin={coin}
-                    price={price}
-                    quote={quote}
-                    percent={percent}
-                    index={index}
-                  />
-                )}
+                <TableItem
+                  chart={chart}
+                  id={id}
+                  icon={icon}
+                  faName={faName}
+                  enName={enName}
+                  coin={coin}
+                  price={price}
+                  quote={quote}
+                  percent={percent}
+                  index={index}
+                />
               </TableRow>
             );
           } else {
@@ -79,22 +75,18 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
                 tabIndex={-1}
                 role="checkbox"
               >
-                {loading ? (
-                  <Loading />
-                ) : (
-                  <TableItem
-                    chart={chart}
-                    id={id}
-                    icon={icon}
-                    faName={faName}
-                    enName={enName}
-                    coin={coin}
-                    price={price}
-                    quote={quote}
-                    percent={percent}
-                    index={index}
-                  />
-                )}
+                <TableItem
+                  chart={chart}
+                  id={id}
+                  icon={icon}
+                  faName={faName}
+                  enName={enName}
+                  coin={coin}
+                  price={price}
+                  quote={quote}
+                  percent={percent}
+                  index={index}
+                />
               </TableRow>
             );
           }

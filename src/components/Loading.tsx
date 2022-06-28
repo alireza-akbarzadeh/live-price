@@ -6,14 +6,19 @@ export const Loading: React.FC = () => {
   return (
     <Box
       sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "90vh",
-        width: "100%",
+        position: "relative",
       }}
     >
-      <CircularProgress disableShrink />
+      <CircularProgress
+        sx={{
+          position: "fixed",
+          bottom: "0",
+          left: "50%",
+          height: "100vh",
+          transition: "translate(-50%,50%)",
+        }}
+        disableShrink
+      />
     </Box>
   );
 };
