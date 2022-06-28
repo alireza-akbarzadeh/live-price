@@ -19,28 +19,38 @@ import { BiStar } from "react-icons/bi";
 import { VscSearch } from "react-icons/vsc";
 
 import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
-
-export const Filter: React.FC = () => {
+// @Interface
+interface IFilterProps {
+  setQuery: (val: string) => void;
+  setPageNumber: (val: number) => void;
+  setSearch: (val: string) => void;
+  setSort: (val: string) => void;
+  sort: string;
+}
+export const Filter: React.FC<IFilterProps> = ({
+  setPageNumber,
+  setQuery,
+  setSearch,
+  setSort,
+  sort,
+}) => {
   const [pending, startTransition] = useTransition();
   //@ context
-  const {
-    currentCurrency,
-    setCurrentCurrency,
-    sort,
-    setSearch,
-    setQueryType,
-    setSort,
-  } = useContext(CurrencyContext) as CurrencyContextType;
+  const { currentCurrency, setCurrentCurrency, setQueryType } = useContext(
+    CurrencyContext
+  ) as CurrencyContextType;
 
   // @handleSort
   const handleChangeSelect = (event: SelectChangeEvent) => {
     setSort(event.target.value);
     setQueryType("sort");
+    setPageNumber(1);
   };
   // @handle-search
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     startTransition(() => setSearch(e.target.value));
     setQueryType("search");
+    setPageNumber(1);
   };
   // @JSX
   return (
@@ -58,7 +68,10 @@ export const Filter: React.FC = () => {
           endAdornment: (
             <InputAdornment position="end">
               {pending ? (
-                <CircularProgress color="secondary" />
+                <CircularProgress
+                  sx={{ width: 15, height: 15 }}
+                  color="secondary"
+                />
               ) : (
                 <VscSearch fontSize={22} />
               )}
