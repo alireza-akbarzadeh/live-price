@@ -112,7 +112,21 @@ export const TableItem: React.FC<ITableProps> = ({
         </Box>
       </TableCell>
       <TableCell align="center">
-        <SimpleLineChart percent={percent} chart={chart} />
+        {percent === 0 ? (
+          <Box
+            sx={{
+              height: "30px",
+              width: "100%",
+              textAlign: "center",
+              boxSizing: " content-box",
+              filter: "hue-rotate(85deg) saturate(80%) brightness(0.85)",
+            }}
+            component={"img"}
+            src={"/images/chart-1.svg"}
+          />
+        ) : (
+          <SimpleLineChart percent={percent} chart={chart} />
+        )}
       </TableCell>
       <TableCell
         sx={{
