@@ -57,6 +57,7 @@ export const Filter: React.FC<IFilterProps> = ({
       mt={4}
       direction="row"
       spacing={5}
+      sx={{ md: { flexDirection: "column" }, lg: { flexDirection: "row" } }}
       alignItems={"center"}
       justifyContent={"center"}
     >

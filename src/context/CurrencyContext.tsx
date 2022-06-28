@@ -9,7 +9,7 @@ export interface CurrencyContextType {
   search: string;
   queryType: string;
   setQueryType: (val: string) => void;
-  meta: {};
+  meta: any;
   setMeta: (val: {}) => void;
   currentCurrency: string;
   setCurrentCurrency: (val: string) => void;
@@ -29,7 +29,7 @@ export function CurrencyProvider({ children }: IContextProps) {
   const [sort, setSort] = useState<string>("");
   const [search, setSearch] = useState<string>("");
   const [queryType, setQueryType] = useState<string>("page");
-  const [meta, setMeta] = useState<any>({});
+  const [meta, setMeta] = useState<any>();
   const [currentCurrency, setCurrentCurrency] = React.useState<string>("تومان");
 
   return (

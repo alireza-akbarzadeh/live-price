@@ -15,7 +15,7 @@ import { useCurrencies } from "@Hook";
 
 const LivePrice: React.FC = () => {
   // @Context
-  const { queryType, setQueryType, setMeta } = useContext(
+  const { queryType, setQueryType, setMeta, meta } = useContext(
     CurrencyContext
   ) as CurrencyContextType;
   // @Hook
@@ -58,13 +58,20 @@ const LivePrice: React.FC = () => {
     >
       <Box mt={5}>
         <Container maxWidth={"lg"}>
-          <Paper sx={{ padding: "20px 20px", borderRadius: 2.3 }} elevation={2}>
+          <Paper
+            sx={{
+              padding: "20px 20px",
+              borderRadius: 2.3,
+              md: { overflow: "auto" },
+            }}
+            elevation={2}
+          >
             <Box sx={{ display: "flex", alignItems: "center", gap: 5 }}>
               <Typography variant={"h4"}>قیمت لحظهای</Typography>
               <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
                 <CircleBounce />
                 <Typography variant={"body1"}>
-                  {/*{totalData[0].meta.paginateHelper.total}*/}
+                  {meta?.paginateHelper?.total}
                   <Typography component={"span"} sx={{ mx: 1 }}>
                     ارز دیجیتال
                   </Typography>

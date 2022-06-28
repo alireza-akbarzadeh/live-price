@@ -9,7 +9,7 @@ export function useCurrencies(
   search: string,
   sort: string,
   queryType: string,
-  setMeta: (val: {}) => void
+  setMeta: (val: any) => void
 ) {
   const [loading, setLoading] = useState<boolean | undefined>(true);
   const [error, setError] = useState<boolean>(false);

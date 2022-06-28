@@ -59,7 +59,7 @@ export const TableCoins: React.FC<Partial<ITableProps>> = ({
   // @JSX
   return (
     <Box sx={{ direction: "rtl" }} mt={4}>
-      <TableContainer sx={{ minWidth: 800 }}>
+      <TableContainer sx={{ minWidth: 800, md: { overflow: "auto" } }}>
         <Table>
           <TableHead sx={{ backgroundColor: "#fafafa" }}>
             <TableRow
