@@ -73,7 +73,7 @@ export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
         <p className="caption2">ผลลัพธ์</p>
         <p className="subheading2">680</p>
       </Box>
-      <LineChart width={330} height={40} data={dataChart}>
+      <LineChart width={150} height={40} data={dataChart}>
         <CartesianGrid vertical={false} opacity="0.2" />
         {/*<XAxis*/}
         {/*  tick={{ fill: "black" }}*/}
