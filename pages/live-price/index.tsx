@@ -7,10 +7,10 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 // @components
 import { CircleBounce, Filter, TableCoins } from "@components";
-
 // @Context
 import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
-import useCurrencies from "@Hook/useCurrencies";
+// @Hook
+import { useCurrencies } from "@Hook";
 //@ts-ignore
 
 const LivePrice: React.FC = () => {

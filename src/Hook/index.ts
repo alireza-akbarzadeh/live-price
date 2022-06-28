@@ -1,1 +1,1 @@
-export {useFetchCurrencies} from "./useFetchCurrencies"
+export { useCurrencies } from "./useCurrencies";

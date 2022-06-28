@@ -1,7 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+// @React
+import { useEffect, useState } from "react";
+// @third-party
 import axios from "axios";
-import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
-export default function useCurrencies(
+
+export function useCurrencies(
   query: string,
   pageNumber: number,
   search: string,
@@ -13,10 +15,11 @@ export default function useCurrencies(
   const [error, setError] = useState<boolean>(false);
   const [currencies, setCurrencies] = useState<any>([]);
   const [hasMore, setHasMore] = useState<boolean>(false);
-
+  // @initial-data
   useEffect(() => {
     setCurrencies([]);
   }, [query]);
+  // @create-params
   let createParams: string | null =
     queryType === "search"
       ? `&q=${search}`
@@ -24,7 +27,7 @@ export default function useCurrencies(
       ? `&sort=${sort}`
       : "";
 
-  console.log(pageNumber, "pagesParams");
+  // @fetch-api
   useEffect(() => {
     setLoading(true);
     setError(false);
