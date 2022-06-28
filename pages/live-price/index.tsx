@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 // @components
-import { CircleBounce, Filter, TableCoins } from "@components";
+import { CircleBounce, Filter, TableCoins, Loading } from "@components";
 // @Context
 import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
 // @Hook
@@ -79,6 +79,7 @@ const LivePrice: React.FC = () => {
               setPageNumber={setPageNumber}
             />
             <TableCoins
+              loading={loading}
               lastBookElementRef={lastBookElementRef}
               error={error}
               data={currencies}

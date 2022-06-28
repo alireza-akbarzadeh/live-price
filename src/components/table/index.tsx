@@ -24,12 +24,14 @@ interface ITableProps {
   fetchNextPage: any;
   lastBookElementRef: any;
   meta: {};
+  loading: boolean;
 }
 
 // @jsX
 export const TableCoins: React.FC<Partial<ITableProps>> = ({
   data,
   lastBookElementRef,
+  loading,
 }) => {
   //@ context
   const { currentCurrency } = useContext(
@@ -74,7 +76,11 @@ export const TableCoins: React.FC<Partial<ITableProps>> = ({
               ))}
             </TableRow>
           </TableHead>
-          <TableCoinsBody lastBookElementRef={lastBookElementRef} data={data} />
+          <TableCoinsBody
+            loading={loading}
+            lastBookElementRef={lastBookElementRef}
+            data={data}
+          />
         </Table>
       </TableContainer>
     </Box>

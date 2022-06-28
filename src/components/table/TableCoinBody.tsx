@@ -3,6 +3,7 @@ import React from "react";
 import { TableRow, TableBody } from "@mui/material";
 // @components
 import TableItem from "@components/table/TableItem";
+import { Loading } from "@components";
 // @interface
 interface ITableCoinsProps {
   data: any;
@@ -12,6 +13,7 @@ interface ITableCoinsProps {
 export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
   data,
   lastBookElementRef,
+  loading,
 }) => {
   // @JSX
   return (
@@ -34,17 +36,21 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
                 tabIndex={-1}
                 role="checkbox"
               >
-                <TableItem
-                  id={id}
-                  icon={icon}
-                  faName={faName}
-                  enName={enName}
-                  coin={coin}
-                  price={price}
-                  quote={quote}
-                  percent={percent}
-                  index={index}
-                />
+                {loading ? (
+                  <Loading />
+                ) : (
+                  <TableItem
+                    id={id}
+                    icon={icon}
+                    faName={faName}
+                    enName={enName}
+                    coin={coin}
+                    price={price}
+                    quote={quote}
+                    percent={percent}
+                    index={index}
+                  />
+                )}
               </TableRow>
             );
           } else {
@@ -61,17 +67,21 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
                 tabIndex={-1}
                 role="checkbox"
               >
-                <TableItem
-                  id={id}
-                  icon={icon}
-                  faName={faName}
-                  enName={enName}
-                  coin={coin}
-                  price={price}
-                  quote={quote}
-                  percent={percent}
-                  index={index}
-                />
+                {loading ? (
+                  <Loading />
+                ) : (
+                  <TableItem
+                    id={id}
+                    icon={icon}
+                    faName={faName}
+                    enName={enName}
+                    coin={coin}
+                    price={price}
+                    quote={quote}
+                    percent={percent}
+                    index={index}
+                  />
+                )}
               </TableRow>
             );
           }
