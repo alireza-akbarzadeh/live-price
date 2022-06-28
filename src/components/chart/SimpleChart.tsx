@@ -92,22 +92,9 @@ export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
     updateTooltip(e);
   };
   return (
-    <Box
-      sx={{
-        // display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <Box>
       <Box
         sx={{
-          ml: 24,
-          // display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-          // width: 48,
-          alignItems: "center",
-          mt: "32px",
-          mb: "10px",
           "& > .caption2 , & > .subheading2": {
             display: "none",
           },
@@ -116,7 +103,7 @@ export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
         <p className="caption2">ผลลัพธ์</p>
         <p className="subheading2">680</p>
       </Box>
-      <LineChart width={330} height={50} data={dataChart}>
+      <LineChart width={330} height={40} data={dataChart}>
         <CartesianGrid vertical={false} opacity="0.2" />
         {/*<XAxis*/}
         {/*  tick={{ fill: "black" }}*/}
@@ -145,10 +132,7 @@ export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
       </LineChart>
       <Box
         sx={{
-          // display: "flex",
           color: "#fff",
-          justifyContent: "center",
-          alignItems: "center",
         }}
         className="ui-chart-tooltip"
         ref={(ref) => setTooltip(ref)}
