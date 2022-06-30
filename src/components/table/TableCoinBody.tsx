@@ -3,10 +3,11 @@ import React from "react";
 import { TableRow, TableBody } from "@mui/material";
 // @components
 import TableItem from "@components/table/TableItem";
-import { Loading } from "@components";
+import { Currencies } from "@interface/Currencies";
+
 // @interface
 interface ITableCoinsProps {
-  data: any;
+  data: Currencies[] | undefined;
   lastBookElementRef: any;
   loading: boolean | undefined;
 }
@@ -14,13 +15,13 @@ interface ITableCoinsProps {
 export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
   data,
   lastBookElementRef,
-  loading,
-}) => {
+}: ITableCoinsProps) => {
   // @JSX
+
   return (
     <TableBody>
       <>
-        {data?.map((row: any, index: any) => {
+        {data?.map((row, index) => {
           const {
             id,
             icon,
@@ -45,7 +46,7 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
                   },
                 }}
                 tabIndex={-1}
-                role="checkbox"
+                role='checkbox'
               >
                 <TableItem
                   chart={chart}
@@ -73,7 +74,7 @@ export const TableCoinsBody: React.FC<ITableCoinsProps> = ({
                   },
                 }}
                 tabIndex={-1}
-                role="checkbox"
+                role='checkbox'
               >
                 <TableItem
                   chart={chart}

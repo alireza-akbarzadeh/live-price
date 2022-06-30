@@ -10,7 +10,7 @@ import { CircleBounce, Filter, TableCoins } from "@components";
 // @Context
 import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
 // @Hook
-import { useCurrencies } from "@Hook";
+import { useCurrencies, useLivePrice } from "@Hook";
 //@ts-ignore
 
 const LivePrice: React.FC = () => {
@@ -19,10 +19,16 @@ const LivePrice: React.FC = () => {
     CurrencyContext
   ) as CurrencyContextType;
   // @Hook
-  const [query, setQuery] = useState<string>("");
-  const [search, setSearch] = useState<string>("");
-  const [sort, setSort] = useState<string>("");
-  const [pageNumber, setPageNumber] = useState<number>(1);
+  const {
+    query,
+    search,
+    sort,
+    pageNumber,
+    setPageNumber,
+    setQuery,
+    setSearch,
+    setSort,
+  } = useLivePrice();
   // @call data
   const { currencies, hasMore, loading, error } = useCurrencies(
     query,
@@ -35,7 +41,7 @@ const LivePrice: React.FC = () => {
   // @logic for infinite scroll
   const observer = useRef<IntersectionObserver>();
   const lastBookElementRef = useCallback(
-    (node: any) => {
+    (node: Element) => {
       if (loading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {

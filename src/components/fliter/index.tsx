@@ -6,18 +6,17 @@ import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import InputAdornment from "@mui/material/InputAdornment";
-import {
-  CircularProgress,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import { SelectChangeEvent } from "@mui/material";
 // @react-icons
 import { BiStar } from "react-icons/bi";
 import { VscSearch } from "react-icons/vsc";
 
+// @context
 import { CurrencyContext, CurrencyContextType } from "@context/CurrencyContext";
 // @Interface
 interface IFilterProps {
@@ -55,7 +54,7 @@ export const Filter: React.FC<IFilterProps> = ({
   return (
     <Stack
       mt={4}
-      direction="row"
+      direction='row'
       spacing={5}
       sx={{ md: { flexDirection: "column" }, lg: { flexDirection: "row" } }}
       alignItems={"center"}
@@ -66,11 +65,11 @@ export const Filter: React.FC<IFilterProps> = ({
         sx={{ minWidth: 350 }}
         InputProps={{
           endAdornment: (
-            <InputAdornment position="end">
+            <InputAdornment position='end'>
               {pending ? (
                 <CircularProgress
                   sx={{ width: 15, height: 15 }}
-                  color="secondary"
+                  color='secondary'
                 />
               ) : (
                 <VscSearch fontSize={22} />
@@ -79,8 +78,8 @@ export const Filter: React.FC<IFilterProps> = ({
           ),
         }}
         color={"secondary"}
-        id="demo-helper-text-aligned"
-        label="جستجو"
+        id='demo-helper-text-aligned'
+        label='جستجو'
       />
       <Box sx={{ minWidth: 150 }}>
         <Button
@@ -95,13 +94,13 @@ export const Filter: React.FC<IFilterProps> = ({
       </Box>
       <Box sx={{ minWidth: 180 }}>
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">ترتیب بر اساس</InputLabel>
+          <InputLabel id='demo-simple-select-label'>ترتیب بر اساس</InputLabel>
           <Select
             color={"success"}
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            labelId='demo-simple-select-label'
+            id='demo-simple-select'
             value={sort}
-            label="ترتیب بر اساس"
+            label='ترتیب بر اساس'
             onChange={handleChangeSelect}
           >
             <MenuItem value={2}>ییشترین قیمت</MenuItem>

@@ -16,13 +16,14 @@ import { TableCoinsBody } from "@components/table/TableCoinBody";
 // @scroll
 
 // @Interface
+import { TableHead as TableProps } from "@interface/TableHead";
+import { Currencies } from "@interface/Currencies";
+
 interface ITableProps {
-  data: any;
-  error: any;
+  data: Currencies[];
+  error: unknown;
   status: string;
-  hasNextPage: any;
-  fetchNextPage: any;
-  lastBookElementRef: any;
+  lastBookElementRef: unknown;
   meta: {};
   loading: boolean | undefined;
 }
@@ -40,7 +41,7 @@ export const TableCoins: React.FC<Partial<ITableProps>> = ({
   // @table Head
   // @Hook
 
-  const TABLE_HEAD = [
+  const TABLE_HEAD: TableProps[] = [
     { id: "ارز دیجیتال", label: "ارز دیجیتال", alignRight: false },
     {
       id: "قیمت خرید",
@@ -69,7 +70,7 @@ export const TableCoins: React.FC<Partial<ITableProps>> = ({
             flexDirection: "column",
           }}
         >
-          <img src={"/images/NotFound.svg"} alt="Not Found" />
+          <img src={"/images/NotFound.svg"} alt='Not Found' />
           Not Fount
         </Box>
       ) : (

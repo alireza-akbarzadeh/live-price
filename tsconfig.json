@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,73 +15,30 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@components": [
-        "src/components"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ],
-      "@utils": [
-        "src/utils"
-      ],
-      "@features/*": [
-        "src/features/*"
-      ],
-      "@features": [
-        "src/features"
-      ],
-      "@context/*": [
-        "src/context/*"
-      ],
-      "@context": [
-        "src/context"
-      ],
-      "@Hook/*": [
-        "src/Hook/*"
-      ],
-      "@Hook": [
-        "src/Hook"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ],
-      "@assets": [
-        "src/assets"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@styles": [
-        "src/styles"
-      ],
-      "@public/*": [
-        "public/*"
-      ],
-      "@public": [
-        "public"
-      ],
-      "@i18n": [
-        "./i18n"
-      ],
-      "@test/*": [
-        "test/*"
-      ],
-      "@test": [
-        "test"
-      ]
+      "@components/*": ["src/components/*"],
+      "@components": ["src/components"],
+      "@utils/*": ["src/utils/*"],
+      "@utils": ["src/utils"],
+      "@features/*": ["src/features/*"],
+      "@features": ["src/features"],
+      "@interface/*": ["src/interface/*"],
+      "@interface": ["src/interface"],
+      "@context/*": ["src/context/*"],
+      "@context": ["src/context"],
+      "@Hook/*": ["src/Hook/*"],
+      "@Hook": ["src/Hook"],
+      "@assets/*": ["src/assets/*"],
+      "@assets": ["src/assets"],
+      "@styles/*": ["src/styles/*"],
+      "@styles": ["src/styles"],
+      "@public/*": ["public/*"],
+      "@public": ["public"],
+      "@i18n": ["./i18n"],
+      "@test/*": ["test/*"],
+      "@test": ["test"]
     },
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    "test/*"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "test/*"]
 }

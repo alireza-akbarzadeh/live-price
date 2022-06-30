@@ -2,18 +2,21 @@
 import { useEffect, useState } from "react";
 // @third-party
 import axios from "axios";
+// @interface
+import { Currencies } from "../interface/Currencies";
 
+// @function
 export function useCurrencies(
   query: string,
   pageNumber: number,
   search: string,
   sort: string,
   queryType: string,
-  setMeta: (val: any) => void
+  setMeta: (val: unknown) => void
 ) {
   const [loading, setLoading] = useState<boolean | undefined>(true);
   const [error, setError] = useState<boolean>(false);
-  const [currencies, setCurrencies] = useState<any>([]);
+  const [currencies, setCurrencies] = useState<Currencies[]>([]);
   const [hasMore, setHasMore] = useState<boolean>(false);
   // @initial-data
   useEffect(() => {

@@ -1,17 +1,10 @@
 import React, { useState } from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-} from "recharts";
+import { LineChart, Line, CartesianGrid } from "recharts";
 import { Box } from "@mui/material";
 
 interface iSimpleChartProps {
-  chart: any;
-  percent: any;
+  chart: [];
+  percent: number;
 }
 export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
   const [tooltip, setTooltip] = useState<any>(null);
@@ -42,7 +35,6 @@ export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
   const updateTooltip = (e: any) => {
     let x = Math.round(e.cx);
     let y = Math.round(e.cy);
-
     tooltip.style.opacity = "1";
     tooltip.style.transform = `translate(${x}px, ${y}px)`;
     tooltip.childNodes[0].innerHTML = e.value;
@@ -57,7 +49,7 @@ export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
     }
   };
 
-  const onChartMouseLeave = (e: any) => {
+  const onChartMouseLeave = (e: EventListenerObject) => {
     setPoints(null);
     updateTooltip(e);
   };
@@ -70,29 +62,16 @@ export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
           },
         }}
       >
-        <p className="caption2">ผลลัพธ์</p>
-        <p className="subheading2">680</p>
+        <p className='caption2'>ผลลัพธ์</p>
+        <p className='subheading2'>680</p>
       </Box>
       <LineChart width={150} height={40} data={dataChart}>
-        <CartesianGrid vertical={false} opacity="0.2" />
-        {/*<XAxis*/}
-        {/*  tick={{ fill: "black" }}*/}
-        {/*  axisLine={false}*/}
-        {/*  tickLine={false}*/}
-        {/*  dataKey="name"*/}
-        {/*/>*/}
-        {/*<YAxis*/}
-        {/*  tickCount={0}*/}
-        {/*  axisLine={false}*/}
-        {/*  tickLine={false}*/}
-        {/*  tick={{ fill: "black" }}*/}
-        {/*  type="category"*/}
-        {/*/>*/}
+        <CartesianGrid vertical={false} opacity='0.2' />
         <Line
           fill={percent > 0 ? "#74d4ab" : "#ef6b64"}
           stroke={percent > 0 ? "#74d4ab" : "#ef6b64"}
-          type="monotone"
-          dataKey="value"
+          type='monotone'
+          dataKey='value'
           //@ts-ignore
           activeDot={(e) => {
             onChartMouseMove(e);
@@ -104,10 +83,10 @@ export const SimpleLineChart = ({ chart, percent }: iSimpleChartProps) => {
         sx={{
           color: "#fff",
         }}
-        className="ui-chart-tooltip"
+        className='ui-chart-tooltip'
         ref={(ref) => setTooltip(ref)}
       >
-        <div className="ui-chart-tooltip-content"></div>
+        <div className='ui-chart-tooltip-content'></div>
       </Box>
     </Box>
   );

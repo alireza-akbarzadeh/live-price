@@ -6,7 +6,7 @@ import { Box } from "@mui/material";
 import Link from "next/link";
 
 // @JSX
-const Home: React.FC = (props) => {
+const Home: React.FC = () => {
   return (
     <Box sx={{ textAlign: "center", mt: 10 }}>
       <Link href={"/live-price"}>Go TO Live Price</Link>

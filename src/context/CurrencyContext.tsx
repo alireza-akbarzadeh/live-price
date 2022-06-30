@@ -10,7 +10,7 @@ export interface CurrencyContextType {
   queryType: string;
   setQueryType: (val: string) => void;
   meta: any;
-  setMeta: (val: {}) => void;
+  setMeta: (val: unknown) => void;
   currentCurrency: string;
   setCurrentCurrency: (val: string) => void;
   pageParam?: number;
